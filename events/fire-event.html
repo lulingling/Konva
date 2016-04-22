@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="common.css" rel="stylesheet" type="text/css">
+    <script src="../js/konva.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    var stage = new Konva.Stage({
+        container: 'container',
+        width: 300,
+        height: 300
+    });
+
+    var layer = new Konva.Layer();
+
+    var circle = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2 + 10,
+        radius: 70,
+        fill: 'red',
+        stroke: 'black',
+        strokeWidth: 4,
+    });
+
+    var text = new Konva.Text({
+        text: '',
+        fontFamily: 'Calibri',
+        fontSize: 24,
+        fill: 'black',
+        x: 10,
+        y: 10
+    });
+
+    circle.on('mouseover', function () {
+        text.setText("You mouseover the circle!");
+        layer.draw();
+    });
+
+    layer.add(circle).add(text);
+
+    stage.add(layer);
+
+    circle.fire('mouseover');
+
+</script>
+</body>
+</html>

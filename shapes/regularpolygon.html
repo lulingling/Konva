@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-2.1.4.js"></script>
+    <script src="../js/konva.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<script>
+    var stage =new Konva.Stage({
+        container:'content',
+        width:500,
+        height:500
+    })
+
+    var layer = new Konva.Layer();
+
+    var pentagon = new Konva.RegularPolygon({
+        x:stage.getWidth()/2,
+        y:stage.getHeight()/2,
+        sides:5,
+        radius:70,
+        fill:'red',
+        stroke:'black',
+        strokeWidth:4,
+        shadowOffsetX:20,
+        shadowOffsetY:25,
+        shadowBlur:40,
+        opacity:0.5
+    })
+
+    layer.add(pentagon);
+    stage.add(layer);
+</script>
+</body>
+</html>

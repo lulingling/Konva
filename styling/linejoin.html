@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="common.css" rel="stylesheet" type="text/css">
+    <!--<script src="../js/jquery-2.1.4.js"></script>-->
+    <script src="../js/konva.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var stage = new Konva.Stage({
+        container: 'container',
+        width: width,
+        height: height
+    });
+
+    var layer = new Konva.Layer();
+
+    var triangle = new Konva.RegularPolygon({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        sides: 3,
+        radius: 70,
+        fill: 'red',
+        stroke: 'black',
+        strokeWidth: 20,
+        lineJoin: 'bevel'
+    });
+
+    triangle.on('mouseover', function () {
+        this.lineJoin('round');
+        layer.draw();
+    });
+
+    triangle.on('mouseout', function () {
+        this.lineJoin('bevel');
+        layer.draw();
+    });
+
+    layer.add(triangle);
+    stage.add(layer);
+</script>
+</body>
+</html>

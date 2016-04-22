@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="common.css" rel="stylesheet" type="text/css">
+    <script src="../js/konva.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    var stage = new Konva.Stage({
+        container: 'container',
+        width: 300,
+        height: 300
+    });
+
+    var layer = new Konva.Layer();
+
+    var group = new Konva.Group();
+
+    var circle = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 70,
+        fill: 'red',
+        stroke: 'black',
+        strokeWidth: 4,
+    });
+
+    circle.on('click', function (event) {
+        alert('You clicked the circle!');
+        /*阻止冒泡*/
+        event.cancelBubble = true;
+    })
+
+    group.on('click', function () {
+        alert('You clicked the group!');
+    });
+
+    layer.on('click', function () {
+        alert('You clicked the layer!');
+    });
+
+    group.add(circle);
+    layer.add(group);
+    stage.add(layer);
+
+    stage.add(layer);
+
+</script>
+</body>
+</html>
